@@ -6,7 +6,6 @@ import SiteHeader from './SiteHeader'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ChatWidget from '../ui/ChatWidget'
-import ThemeButton from '../common/ThemeButton'
 
 const PRELOADER_LETTERS = ['Y', 'A', 'B', 'E', 'T', 'E', 'C', 'H']
 
@@ -114,19 +113,16 @@ export default function Layout() {
                     </div>
                   </li>
                 </ul>
-                <ThemeButton to="/contact" className="mt-4">
-                  Contact us
-                </ThemeButton>
-                <div className="offcanvas__contact-actions">
-                  <div className="social-icon d-flex align-items-center">
-                    <a href={company.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                      <i className="fab fa-linkedin-in" />
-                    </a>
-                  </div>
-                  <div className="offcanvas__contact-quick">
-                    <a href={`tel:${BRAND_PHONE_TEL}`}>{BRAND_PHONE}</a>
-                    <a href={`mailto:${BRAND_EMAIL}`}>{BRAND_EMAIL}</a>
-                  </div>
+                <div className="social-icon d-flex align-items-center offcanvas__social-links">
+                  <a href={company.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                    <i className="fab fa-linkedin-in" />
+                  </a>
+                  <a href={`tel:${BRAND_PHONE_TEL}`} aria-label={`Call ${BRAND_PHONE}`}>
+                    <i className="fa-solid fa-phone" />
+                  </a>
+                  <a href={`mailto:${BRAND_EMAIL}`} aria-label={`Email ${BRAND_EMAIL}`}>
+                    <i className="fa-solid fa-envelope" />
+                  </a>
                 </div>
               </div>
             </div>
