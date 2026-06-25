@@ -4,6 +4,7 @@ import { BRAND_LOGO, BRAND_NAME, BRAND_EMAIL, BRAND_PHONE, BRAND_PHONE_TEL, BRAN
 import { footer, company } from '../../data/siteContent'
 import SiteHeader from './SiteHeader'
 import Footer from './Footer'
+import MobileNav from './MobileNav'
 import ChatWidget from '../ui/ChatWidget'
 import ThemeButton from '../common/ThemeButton'
 
@@ -80,7 +81,7 @@ export default function Layout() {
                 </div>
               </div>
               <p className="text d-none d-xl-block">{footer.blurb}</p>
-              <div className="mobile-menu fix mb-3" />
+              <MobileNav />
               <div className="offcanvas__contact">
                 <h4>Contact Info</h4>
                 <ul>

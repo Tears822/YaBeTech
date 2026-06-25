@@ -86,6 +86,109 @@
   height: 20px;
 }
 
+/* Mobile: hide desktop nav — use offcanvas hamburger menu instead */
+@media (max-width: 1199px) {
+  .header-1 .mean__menu-wrapper {
+    display: none;
+  }
+
+  .header-1 .header-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .header-1 .logo.brand-logo {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .header-1 .header-right {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .header-1 .brand-logo__text {
+    display: none;
+  }
+}
+
+/* Offcanvas mobile navigation */
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav li a {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  color: var(--header);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: capitalize;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  font-family: "Inter", sans-serif;
+}
+
+.mobile-nav li a:hover,
+.mobile-nav li a.active {
+  color: var(--theme);
+}
+
+.mobile-nav li:last-child a {
+  border-bottom: 0;
+}
+
+/* Hero mobile polish */
+@media (max-width: 767px) {
+  .hero-1 {
+    padding-top: 120px;
+  }
+
+  .hero-1 .hero-content h1 {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    line-height: 1.15;
+  }
+
+  .hero-1 .hero-content h6 {
+    line-height: 1.5;
+  }
+
+  .hero-1 .hero-content h6 span {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .hero-1 .hero-content p {
+    line-height: 1.6;
+  }
+
+  .hero-1 .hero-content .hero-info {
+    margin-top: 24px;
+  }
+
+  /* Template theme switcher overlaps hero copy on phones */
+  .color-palate {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .hero-1 {
+    padding-top: 100px;
+  }
+
+  .hero-1 .hero-content .theme-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .service-details-wrapper .sidebar-widget-image .white-logo img,
 .project-details-wrapper .project-details-sidebar .sidebar-widget-image .white-logo img {
   height: 36px;

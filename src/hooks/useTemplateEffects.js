@@ -370,6 +370,9 @@ export function useTemplateEffects() {
 
     initUiChrome()
 
+    document.querySelector('.offcanvas__info')?.classList.remove('info-open')
+    document.querySelector('.offcanvas__overlay')?.classList.remove('overlay-open')
+
     const timer = setTimeout(async () => {
       swipersRef.current.forEach((s) => s.destroy?.(true, true))
       if (cancelled) return
