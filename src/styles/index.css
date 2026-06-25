@@ -144,6 +144,51 @@
   border-bottom: 0;
 }
 
+/* Offcanvas: phone + email beside LinkedIn on mobile */
+.offcanvas__contact-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.offcanvas__contact-actions .social-icon {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+.offcanvas__contact-quick {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.offcanvas__contact-quick a {
+  color: var(--header);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.offcanvas__contact-quick a:hover {
+  color: var(--theme);
+}
+
+@media (min-width: 576px) {
+  .offcanvas__contact-quick {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+  }
+
+  .offcanvas__contact-quick a {
+    font-size: 16px;
+  }
+}
+
 /* Hero mobile polish */
 @media (max-width: 767px) {
   .hero-1 {

@@ -117,10 +117,16 @@ export default function Layout() {
                 <ThemeButton to="/contact" className="mt-4">
                   Contact us
                 </ThemeButton>
-                <div className="social-icon d-flex align-items-center">
-                  <a href={company.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                    <i className="fab fa-linkedin-in" />
-                  </a>
+                <div className="offcanvas__contact-actions">
+                  <div className="social-icon d-flex align-items-center">
+                    <a href={company.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                      <i className="fab fa-linkedin-in" />
+                    </a>
+                  </div>
+                  <div className="offcanvas__contact-quick">
+                    <a href={`tel:${BRAND_PHONE_TEL}`}>{BRAND_PHONE}</a>
+                    <a href={`mailto:${BRAND_EMAIL}`}>{BRAND_EMAIL}</a>
+                  </div>
                 </div>
               </div>
             </div>
