@@ -149,6 +149,53 @@
   margin-top: 24px;
 }
 
+/* Footer: Get in touch with inline icons + social buttons */
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footer-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--theme);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.footer-contact-list li > span:last-child,
+.footer-contact-list li > a {
+  flex: 1;
+  min-width: 0;
+}
+
+.footer__social-links {
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.footer__social-links a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(61, 72, 87, 0.5);
+  color: var(--white);
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer__social-links a:hover {
+  background-color: var(--theme);
+  color: var(--white);
+}
+
 /* Hero mobile polish */
 @media (max-width: 767px) {
   .hero-1 {

@@ -62,16 +62,43 @@ export default function Footer() {
                   <div className="widget-head">
                     <h3>Get in touch</h3>
                   </div>
-                  <ul className="contact-list">
-                    <li>{BRAND_LOCATION}</li>
+                  <ul className="contact-list footer-contact-list">
                     <li>
+                      <span className="footer-contact-icon" aria-hidden="true">
+                        <i className="fal fa-map-marker-alt" />
+                      </span>
+                      <span>{BRAND_LOCATION}</span>
+                    </li>
+                    <li>
+                      <span className="footer-contact-icon" aria-hidden="true">
+                        <i className="fa-solid fa-phone" />
+                      </span>
                       <a href={`tel:${BRAND_PHONE_TEL}`}>{BRAND_PHONE}</a>
                     </li>
                     <li>
+                      <span className="footer-contact-icon" aria-hidden="true">
+                        <i className="fa-solid fa-envelope" />
+                      </span>
                       <a href={`mailto:${BRAND_EMAIL}`}>{BRAND_EMAIL}</a>
                     </li>
-                    <li>{company.hours}</li>
+                    <li>
+                      <span className="footer-contact-icon" aria-hidden="true">
+                        <i className="fa-regular fa-clock" />
+                      </span>
+                      <span>{company.hours}</span>
+                    </li>
                   </ul>
+                  <div className="social-icon d-flex align-items-center footer__social-links">
+                    <a href={company.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                      <i className="fab fa-linkedin-in" />
+                    </a>
+                    <a href={`tel:${BRAND_PHONE_TEL}`} aria-label={`Call ${BRAND_PHONE}`}>
+                      <i className="fa-solid fa-phone" />
+                    </a>
+                    <a href={`mailto:${BRAND_EMAIL}`} aria-label={`Email ${BRAND_EMAIL}`}>
+                      <i className="fa-solid fa-envelope" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -83,9 +110,15 @@ export default function Footer() {
               <p className="wow fadeInUp" data-wow-delay=".3s">
                 © {new Date().getFullYear()} <b>{BRAND_NAME}.</b> All rights reserved.
               </p>
-              <div className="social-icon d-flex align-items-center wow fadeInUp" data-wow-delay=".5s">
+              <div className="social-icon d-flex align-items-center footer-bottom__social wow fadeInUp" data-wow-delay=".5s">
                 <a href={company.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
                   <i className="fab fa-linkedin-in" />
+                </a>
+                <a href={`tel:${BRAND_PHONE_TEL}`} aria-label={`Call ${BRAND_PHONE}`}>
+                  <i className="fa-solid fa-phone" />
+                </a>
+                <a href={`mailto:${BRAND_EMAIL}`} aria-label={`Email ${BRAND_EMAIL}`}>
+                  <i className="fa-solid fa-envelope" />
                 </a>
               </div>
               <ul className="footer-list wow fadeInUp" data-wow-delay=".7s">
