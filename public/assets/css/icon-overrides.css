@@ -1,0 +1,17 @@
+/*
+ * Optional fallbacks for a few Pro-only icon names on pages that use sharp/legacy variants.
+ * Main icons load from reference Font Awesome Pro webfonts in /assets/webfonts/.
+ */
+
+.fa-sharp.fa-solid.fa-location-dot::before,
+.fa-solid.fa-location-dot::before {
+  content: "\f3c5";
+}
+
+.fa-solid.fa-phone-xmark::before {
+  content: "\f3dd";
+}
+
+.fa-regular.fa-clock-two-thirty::before {
+  content: "\f017";
+}
