@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { primaryNav } from '../../config/navigation'
+import { useNav } from '../../i18n/useNav'
 
 function closeOffcanvas() {
   document.querySelector('.offcanvas__info')?.classList.remove('info-open')
@@ -7,10 +7,12 @@ function closeOffcanvas() {
 }
 
 export default function MobileNav() {
+  const nav = useNav()
+
   return (
     <nav className="mobile-nav" aria-label="Mobile navigation">
       <ul>
-        {primaryNav.map((item) => (
+        {nav.map((item) => (
           <li key={item.to}>
             <NavLink to={item.to} end={item.end} onClick={closeOffcanvas}>
               {item.label}

@@ -1,9 +1,8 @@
-import { company } from '../data/siteContent'
+import { companyMeta } from '../i18n/siteAssets'
 
-export const BRAND_NAME = company.name
+export const BRAND_NAME = companyMeta.name
 export const BRAND_LOGO = '/logo.svg'
-export const BRAND_EMAIL = company.email
-export const BRAND_PHONE = company.phone
-export const BRAND_PHONE_TEL = company.phoneTel
-export const BRAND_LOCATION = company.location
-export const BRAND_TAGLINE = company.tagline
+export const BRAND_EMAIL = companyMeta.email
+export const BRAND_PHONE = companyMeta.phone
+export const BRAND_PHONE_TEL = companyMeta.phoneTel
+export const BRAND_LOCATION = companyMeta.location

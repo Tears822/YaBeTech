@@ -2,15 +2,17 @@ import { Link, useParams } from 'react-router-dom'
 import CtaBanner from '../components/common/CtaBanner'
 import PageBreadcrumb from '../components/common/PageBreadcrumb'
 import ThemeButton from '../components/common/ThemeButton'
-import { featuredProjects } from '../data/siteContent'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function ProjectDetails() {
   const { slug } = useParams()
+  const { t } = useLanguage()
+  const { featuredProjects, projectDetails } = t
   const project = featuredProjects.find((item) => item.slug === slug) ?? featuredProjects[0]
 
   return (
     <>
-      <PageBreadcrumb title="Project details" current={project.title.split(':')[0]} />
+      <PageBreadcrumb title={t.pages.projectDetails} current={project.shortTitle} />
 
       <section className="project-details-section fix section-padding">
         <div className="container">
@@ -30,28 +32,25 @@ export default function ProjectDetails() {
                       </span>
                     ))}
                   </div>
-                  <p>
-                    Representative client work spanning front-end modernization, API integration, and
-                    production deployment. Reach out to discuss similar projects for your team.
-                  </p>
+                  <p>{projectDetails.body}</p>
                 </div>
               </div>
               <div className="col-lg-4">
                 <div className="main-sidebar">
                   <div className="sidebar-widget">
-                    <h3>More work</h3>
+                    <h3>{projectDetails.moreWork}</h3>
                     <ul className="category-list">
                       {featuredProjects.map((item) => (
                         <li key={item.slug}>
                           <Link to={`/product/${item.slug}`}>
-                            {item.title.split(':')[0]}
+                            {item.shortTitle}
                             <i className="fa-solid fa-arrow-up-right" />
                           </Link>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <ThemeButton to="/contact">Discuss a project</ThemeButton>
+                  <ThemeButton to="/contact">{t.common.discussProject}</ThemeButton>
                 </div>
               </div>
             </div>

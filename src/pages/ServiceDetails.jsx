@@ -2,15 +2,17 @@ import { Link, useParams } from 'react-router-dom'
 import CtaBanner from '../components/common/CtaBanner'
 import PageBreadcrumb from '../components/common/PageBreadcrumb'
 import ThemeButton from '../components/common/ThemeButton'
-import { faqItems, services } from '../data/siteContent'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function ServiceDetails() {
   const { slug } = useParams()
+  const { t } = useLanguage()
+  const { services, faqItems, serviceDetails, faqSection } = t
   const service = services.find((item) => item.slug === slug) ?? services[0]
 
   return (
     <>
-      <PageBreadcrumb title="Service details" current={service.title} />
+      <PageBreadcrumb title={t.pages.serviceDetails} current={service.title} />
 
       <section className="service-details-section fix section-padding">
         <div className="container">
@@ -40,7 +42,7 @@ export default function ServiceDetails() {
               <div className="col-lg-4">
                 <div className="main-sidebar">
                   <div className="sidebar-widget">
-                    <h3>All services</h3>
+                    <h3>{serviceDetails.allServices}</h3>
                     <ul className="category-list">
                       {services.map((item) => (
                         <li key={item.id}>
@@ -53,9 +55,9 @@ export default function ServiceDetails() {
                     </ul>
                   </div>
                   <div className="sidebar-widget">
-                    <h3>Start a project</h3>
-                    <p>Tell me about your stack, timeline, and goals.</p>
-                    <ThemeButton to="/contact">Get in touch</ThemeButton>
+                    <h3>{serviceDetails.startProject}</h3>
+                    <p>{serviceDetails.startProjectText}</p>
+                    <ThemeButton to="/contact">{t.common.getInTouch}</ThemeButton>
                   </div>
                 </div>
               </div>
@@ -68,10 +70,10 @@ export default function ServiceDetails() {
         <div className="container">
           <div className="section-title text-center mb-5">
             <h6 className="sub-title wow fadeInUp">
-              <img src="/assets/img/home-1/star.svg" alt="" /> FAQ
+              <img src="/assets/img/home-1/star.svg" alt="" /> {faqSection.eyebrow}
             </h6>
             <h2 className="text-anim">
-              Common questions <br /> <span>about working together.</span>
+              {faqSection.title} <br /> <span>{faqSection.titleAccent}</span>
             </h2>
           </div>
           <ul className="accordion-box">

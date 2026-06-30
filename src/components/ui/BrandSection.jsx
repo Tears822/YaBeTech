@@ -1,24 +1,26 @@
-import { partnerLogos } from '../../data/siteContent'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 export default function BrandSection({ className = '' }) {
+  const { t } = useLanguage()
+
   return (
-    <div className={`brand-section ${className}`.trim()}>
+    <section className={`brand-section ${className}`.trim()}>
       <div className="swiper brand-slider">
         <div className="swiper-wrapper">
-          {partnerLogos.map((logo) => (
+          {t.partnerLogos.map((logo) => (
             <div key={logo.name} className="swiper-slide">
               <div className="brand-box-1">
                 <span className="brand-img-1">
-                  <img className="brand-logo" src={logo.src} alt={logo.name} />
+                  <img src={logo.src} alt={logo.name} className="brand-logo brand-logo-svg" />
                 </span>
                 <span className="brand-img-1">
-                  <img className="brand-logo" src={logo.src} alt="" aria-hidden="true" />
+                  <img src={logo.src} alt="" aria-hidden="true" className="brand-logo brand-logo-svg" />
                 </span>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

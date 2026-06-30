@@ -1,16 +1,19 @@
 import { Link, Outlet } from 'react-router-dom'
 import { useTemplateEffects } from '../../hooks/useTemplateEffects'
 import { BRAND_LOGO, BRAND_NAME, BRAND_EMAIL, BRAND_PHONE, BRAND_PHONE_TEL, BRAND_LOCATION } from '../../constants/brand'
-import { footer, company } from '../../data/siteContent'
+import { useLanguage } from '../../i18n/LanguageContext'
 import SiteHeader from './SiteHeader'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ChatWidget from '../ui/ChatWidget'
+import LanguageSelector from '../ui/LanguageSelector'
 
 const PRELOADER_LETTERS = ['Y', 'A', 'B', 'E', 'T', 'E', 'C', 'H']
 
 export default function Layout() {
   useTemplateEffects()
+  const { t } = useLanguage()
+  const { footer, company, layout } = t
 
   return (
     <div className="page-wrapper">
@@ -24,7 +27,7 @@ export default function Layout() {
               </span>
             ))}
           </div>
-          <p className="text-center">Loading</p>
+          <p className="text-center">{layout.loading}</p>
         </div>
         <div className="loader">
           <div className="row">
@@ -81,8 +84,9 @@ export default function Layout() {
               </div>
               <p className="text d-none d-xl-block">{footer.blurb}</p>
               <MobileNav />
+              <LanguageSelector className="offcanvas-lang-select mb-4" />
               <div className="offcanvas__contact">
-                <h4>Contact Info</h4>
+                <h4>{t.footer.contactInfo}</h4>
                 <ul>
                   <li className="d-flex align-items-center">
                     <div className="offcanvas__contact-icon">
@@ -137,7 +141,7 @@ export default function Layout() {
         <div className="search-popup__overlay search-toggler" />
         <div className="search-popup__content">
           <form role="search" className="search-popup__form" onSubmit={(e) => e.preventDefault()}>
-            <input type="text" id="search" name="search" placeholder="Search Here..." />
+            <input type="text" id="search" name="search" placeholder={layout.searchPlaceholder} />
             <button type="submit" aria-label="Search" className="search-btn">
               <span>
                 <i className="fa-regular fa-magnifying-glass" />

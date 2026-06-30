@@ -1,23 +1,17 @@
 import { Link } from 'react-router-dom'
 import PageBreadcrumb from '../components/common/PageBreadcrumb'
-import {
-  resumeProfile,
-  targetFit,
-  skillGroups,
-  careerJourney,
-  earlierExperience,
-  certifications,
-  education,
-  languages,
-} from '../data/resume'
+import { useLanguage } from '../i18n/LanguageContext'
 import '../styles/resume.css'
 
 export default function Resume() {
-  const { name, title, location, phone, email, linkedin, summary, highlights, stats, tags } = resumeProfile
+  const { t } = useLanguage()
+  const { resume, pages } = t
+  const { sections, cta, profile, targetFit, skillGroups, careerJourney, earlierExperience, certifications, education, languages } =
+    resume
 
   return (
     <div className="resume-page">
-      <PageBreadcrumb title="Resume" />
+      <PageBreadcrumb title={pages.resume} />
 
       <section className="fix resume-hero-section">
         <div className="container">
@@ -25,46 +19,48 @@ export default function Resume() {
             <div className="resume-hero-layout">
               <div className="resume-hero-aside">
                 <div className="resume-hero-avatar">
-                  <img src="/profile.png" alt={name} />
+                  <img src="/profile.png" alt={profile.name} />
                 </div>
               </div>
 
               <div className="resume-hero-body">
                 <div className="section-title mb-0">
                   <h6 className="sub-title">
-                    <img src="/assets/img/home-1/star.svg" alt="" /> Senior Software Engineer
+                    <img src="/assets/img/home-1/star.svg" alt="" /> {sections.seniorEngineer}
                   </h6>
-                  <h2 className="text-anim">{name}</h2>
-                  <p className="mt-3 mb-0">{title}</p>
+                  <h2 className="text-anim">{profile.name}</h2>
+                  <p className="mt-3 mb-0">{profile.title}</p>
                 </div>
 
                 <div className="resume-contact">
                   <span className="resume-contact-item">
                     <i className="fa-solid fa-location-dot" aria-hidden="true" />
-                    {location}
+                    {profile.location}
                   </span>
-                  <a className="resume-contact-item" href={`tel:${phone.replace(/\D/g, '')}`}>
+                  <a className="resume-contact-item" href={`tel:${t.company.phoneTel}`}>
                     <i className="fa-solid fa-phone" aria-hidden="true" />
-                    {phone}
+                    {t.company.phone}
                   </a>
-                  <a className="resume-contact-item" href={`mailto:${email}`}>
+                  <a className="resume-contact-item" href={`mailto:${t.company.email}`}>
                     <i className="fa-solid fa-envelope" aria-hidden="true" />
-                    {email}
+                    {t.company.email}
                   </a>
-                  <a className="resume-contact-item" href={linkedin} target="_blank" rel="noreferrer">
+                  <a className="resume-contact-item" href={t.company.linkedin} target="_blank" rel="noreferrer">
                     <i className="fa-brands fa-linkedin-in" aria-hidden="true" />
                     LinkedIn
                   </a>
                 </div>
 
                 <div className="resume-tags">
-                  {tags.map((tag) => (
-                    <span key={tag} className="resume-tag">{tag}</span>
+                  {profile.tags.map((tag) => (
+                    <span key={tag} className="resume-tag">
+                      {tag}
+                    </span>
                   ))}
                 </div>
 
                 <div className="resume-stats">
-                  {stats.map((stat) => (
+                  {profile.stats.map((stat) => (
                     <div key={stat.label} className="resume-stat">
                       <div className="resume-stat-icon" aria-hidden="true">
                         <i className={stat.icon} />
@@ -89,13 +85,13 @@ export default function Resume() {
               <div className="resume-section wow fadeInUp" data-wow-delay=".2s">
                 <div className="section-title">
                   <h6 className="sub-title">
-                    <img src="/assets/img/home-1/star.svg" alt="" /> Professional Profile
+                    <img src="/assets/img/home-1/star.svg" alt="" /> {sections.professionalProfile}
                   </h6>
-                  <h2 className="text-anim">About Me</h2>
+                  <h2 className="text-anim">{sections.aboutMe}</h2>
                 </div>
-                <p>{summary}</p>
+                <p>{profile.summary}</p>
                 <ul className="resume-list list-unstyled mt-4 mb-0">
-                  {highlights.map((item) => (
+                  {profile.highlights.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
@@ -106,9 +102,9 @@ export default function Resume() {
               <div className="resume-section wow fadeInUp" data-wow-delay=".3s">
                 <div className="section-title">
                   <h6 className="sub-title">
-                    <img src="/assets/img/home-1/star.svg" alt="" /> Architecture & Security
+                    <img src="/assets/img/home-1/star.svg" alt="" /> {sections.architectureSecurity}
                   </h6>
-                  <h2 className="text-anim">Target Fit</h2>
+                  <h2 className="text-anim">{sections.targetFit}</h2>
                 </div>
                 <ul className="resume-list list-unstyled mb-0">
                   {targetFit.map((item) => (
@@ -125,9 +121,9 @@ export default function Resume() {
         <div className="container">
           <div className="section-title text-center">
             <h6 className="sub-title wow fadeInUp">
-              <img src="/assets/img/home-1/star.svg" alt="" /> Career Journey
+              <img src="/assets/img/home-1/star.svg" alt="" /> {sections.careerJourney}
             </h6>
-            <h2 className="text-anim">Professional Experience</h2>
+            <h2 className="text-anim">{sections.professionalExperience}</h2>
           </div>
 
           <div className="row justify-content-center">
@@ -148,7 +144,9 @@ export default function Resume() {
                   </ul>
                   <div className="resume-tool-tags">
                     {item.tools.map((tool) => (
-                      <span key={tool} className="resume-tool-tag">{tool}</span>
+                      <span key={tool} className="resume-tool-tag">
+                        {tool}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -162,9 +160,9 @@ export default function Resume() {
         <div className="container">
           <div className="section-title text-center">
             <h6 className="sub-title wow fadeInUp">
-              <img src="/assets/img/home-1/star.svg" alt="" /> Technical Skills
+              <img src="/assets/img/home-1/star.svg" alt="" /> {sections.technicalSkills}
             </h6>
-            <h2 className="text-anim">Skills & Tools</h2>
+            <h2 className="text-anim">{sections.skillsTools}</h2>
           </div>
 
           <div className="resume-skills-grid">
@@ -177,7 +175,9 @@ export default function Resume() {
                 <h4>{group.title}</h4>
                 <div className="resume-tool-tags">
                   {group.skills.map((skill) => (
-                    <span key={skill} className="resume-tool-tag">{skill}</span>
+                    <span key={skill} className="resume-tool-tag">
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -193,9 +193,9 @@ export default function Resume() {
               <div className="resume-section wow fadeInUp" data-wow-delay=".2s">
                 <div className="section-title">
                   <h6 className="sub-title">
-                    <img src="/assets/img/home-1/star.svg" alt="" /> Earlier Experience
+                    <img src="/assets/img/home-1/star.svg" alt="" /> {sections.earlierExperience}
                   </h6>
-                  <h2 className="text-anim">Earlier Roles</h2>
+                  <h2 className="text-anim">{sections.earlierRoles}</h2>
                 </div>
                 {earlierExperience.map((item) => (
                   <div key={item.company} className="resume-earlier-item">
@@ -212,9 +212,9 @@ export default function Resume() {
               <div className="resume-section wow fadeInUp" data-wow-delay=".3s">
                 <div className="section-title">
                   <h6 className="sub-title">
-                    <img src="/assets/img/home-1/star.svg" alt="" /> Certifications
+                    <img src="/assets/img/home-1/star.svg" alt="" /> {sections.certifications}
                   </h6>
-                  <h2 className="text-anim">Credentials</h2>
+                  <h2 className="text-anim">{sections.credentials}</h2>
                 </div>
                 <ul className="resume-list list-unstyled mb-5">
                   {certifications.map((item) => (
@@ -224,15 +224,17 @@ export default function Resume() {
 
                 <div className="section-title">
                   <h6 className="sub-title">
-                    <img src="/assets/img/home-1/star.svg" alt="" /> Education
+                    <img src="/assets/img/home-1/star.svg" alt="" /> {sections.education}
                   </h6>
-                  <h2 className="text-anim">Background</h2>
+                  <h2 className="text-anim">{sections.background}</h2>
                 </div>
                 <h4>{education.title}</h4>
-                <p>{education.school} · {education.period}</p>
+                <p>
+                  {education.school} · {education.period}
+                </p>
                 <p>{education.note}</p>
                 <p className="mb-0">
-                  <strong>Languages:</strong> {languages.join(' · ')}
+                  <strong>{sections.languagesLabel}:</strong> {languages.join(' · ')}
                 </p>
               </div>
             </div>
@@ -245,8 +247,8 @@ export default function Resume() {
           <div className="resume-cta wow fadeInUp" data-wow-delay=".2s">
             <div className="row align-items-center g-4">
               <div className="col-lg-8">
-                <h3 className="text-white mb-3">Open to new opportunities</h3>
-                <p>Senior and lead frontend roles · architecture and security reviews · full-stack modernization projects.</p>
+                <h3 className="text-white mb-3">{cta.title}</h3>
+                <p>{cta.text}</p>
               </div>
               <div className="col-lg-4 text-lg-end">
                 <Link to="/contact" className="theme-btn">
@@ -258,7 +260,7 @@ export default function Resume() {
                       </span>
                     </div>
                     <div className="btn_text">
-                      <span>Get in touch</span>
+                      <span>{cta.button}</span>
                     </div>
                   </div>
                 </Link>
